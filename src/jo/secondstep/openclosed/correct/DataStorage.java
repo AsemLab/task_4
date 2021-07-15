@@ -17,14 +17,15 @@ public class DataStorage {
 		data.add("3,Raed,33");
 		data.add("4,Kareem,41");
 
-		DatabaseSaveOperator db = new MySql();
-		String address = "data.db";
-
-		save(data, db, address);
+		Database db = new MongoDB();
+		String address = "1.2.2.3";
+		Object required = 8084;
+		
+		save(data, db, address,required);
 	}
 
-	public static void save(List<Object> data, Database db, String address) {
-		db.save(data, address);
+	public static void save(List<Object> data, Database db, String address, Object required) {
+		db.save(data, address, required);
 		
 	}
 

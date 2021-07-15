@@ -11,12 +11,9 @@ public class MySql extends SQL {
 
 	@Override
 	public void validateConnection() {
-		if(!getAddress().endsWith(".db")) {
-			throw new InvalidConnectionException("Invalid file");
-		}
 		
 		dbAddress = new SqlAddress(getAddress());
-		dbAddress.connect();
+		dbAddress.connect(getRequired());
 		
 	}
 

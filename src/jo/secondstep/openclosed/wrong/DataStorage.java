@@ -8,7 +8,6 @@ import jo.secondstep.openclosed.wrong.im.MongoDB;
 import jo.secondstep.openclosed.wrong.im.MySql;
 import jo.secondstep.openclosed.wrong.im.SSHConnection;
 import jo.secondstep.openclosed.wrong.im.SqlAddress;
-import jo.secondstep.openclosed.wrong.interfaces.Connection;
 import jo.secondstep.openclosed.wrong.interfaces.Database;
 
 public class DataStorage {
@@ -21,20 +20,27 @@ public class DataStorage {
 		data.add("4,Kareem,41");
 
 		Database db = new MongoDB();
-		String address = "54515weddjuh215";
+		String address = "1.2.3.4";
+		Object required = 8084;
 
-		save(data, db, address);
+		save(data, db, address, required);
 	}
 
-	public static void save(List<Object> data, Database db, String address) {
+	public static void save(List<Object> data, Database db, String address, Object required) {
 		if (db instanceof AWS) {
-			db.setConnection((Connection) new SSHConnection(address));
+
+			((AWS) db).setConnection(new SSHConnection(address), (String) required);
+
 		} else if (db instanceof MySql) {
-			db.setConnection((Connection) new SqlAddress(address));
+
+			((MySql) db).setConnection(new SqlAddress(address), (String) required);
+
 		} else if (db instanceof MongoDB) {
-			db.setConnection((Connection) new IPAddress(address));
+
+			((MongoDB) db).setConnection(new IPAddress(address), (int) required);
+
 		}
-		
+
 		db.save(data);
 	}
 

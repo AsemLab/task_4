@@ -1,5 +1,6 @@
 package jo.secondstep.openclosed.correct.im;
 
+import jo.secondstep.openclosed.correct.InvalidConnectionException;
 import jo.secondstep.openclosed.correct.interfaces.Connection;
 
 public class SqlAddress implements Connection {
@@ -11,9 +12,12 @@ public class SqlAddress implements Connection {
 	}
 
 	@Override
-	public void connect() {
-	
-		System.out.println("Connect using local database");;
+	public void connect(Object required) {
+		if(!(required instanceof String))
+			throw new InvalidConnectionException("Invalid username object type");
+		
+		
+		System.out.println("Connect using local database: "+address);
 	}
 
 }

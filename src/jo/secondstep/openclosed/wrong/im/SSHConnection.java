@@ -1,8 +1,7 @@
 package jo.secondstep.openclosed.wrong.im;
 
-import jo.secondstep.openclosed.wrong.interfaces.Connection;
 
-public class SSHConnection implements Connection {
+public class SSHConnection {
 
 	String address;
 		
@@ -10,8 +9,7 @@ public class SSHConnection implements Connection {
 		this.address = address;
 	}
 
-	@Override
-	public void connect() {
+	public void connect(String password) {
 	
 		System.out.println("Connect using SSH key");;
 	}

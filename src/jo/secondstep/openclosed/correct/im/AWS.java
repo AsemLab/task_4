@@ -1,7 +1,6 @@
 package jo.secondstep.openclosed.correct.im;
 
 import java.util.List;
-import jo.secondstep.openclosed.correct.InvalidConnectionException;
 import jo.secondstep.openclosed.correct.interfaces.Cloud;
 
 public class AWS extends Cloud {
@@ -10,12 +9,8 @@ public class AWS extends Cloud {
 	
 	@Override
 	public void validateConnection() {
-		if (!getAddress().contains("ssh")) {
-			throw new InvalidConnectionException("Invalid connect method");
-		}
-
 		ssh = new SSHConnection(getAddress());
-		ssh.connect();
+		ssh.connect(getRequired());
 	}
 
 	@Override

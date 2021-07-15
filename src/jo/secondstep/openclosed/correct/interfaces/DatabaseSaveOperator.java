@@ -7,11 +7,13 @@ import jo.secondstep.openclosed.correct.InvalidConnectionException;
 public abstract class DatabaseSaveOperator implements Database {
 
 	private String address;
+	private Object required;
 	
 	@Override
-	final public void save(List<Object> data, String address) {
+	final public void save(List<Object> data, String address, Object required) {
 		try {
 			this.address = address;
+			this.required = required;
 			validateConnection();
 			process(data);
 			
@@ -25,6 +27,10 @@ public abstract class DatabaseSaveOperator implements Database {
 	
 	public String getAddress() {
 		return address;
+	}
+
+	public Object getRequired() {
+		return required;
 	}
 		
 }

@@ -11,12 +11,8 @@ public class MongoDB extends NoSql {
 
 	@Override
 	public void validateConnection() {
-		if (!getAddress().matches("[0-9]\\.[0-9]\\.[0-9]\\.[0-9]")) {
-			throw new InvalidConnectionException("Invalid ip address");
-		}
-
 		ip = new IPAddress(getAddress());
-		ip.connect();
+		ip.connect(getRequired());
 
 	}
 

@@ -1,5 +1,6 @@
 package jo.secondstep.openclosed.correct.im;
 
+import jo.secondstep.openclosed.correct.InvalidConnectionException;
 import jo.secondstep.openclosed.correct.interfaces.Connection;
 
 public class SSHConnection implements Connection {
@@ -11,8 +12,11 @@ public class SSHConnection implements Connection {
 	}
 
 	@Override
-	public void connect() {
-		System.out.println("Connect using SSH key");;
+	public void connect(Object required) {
+		if(!(required instanceof String))
+			throw new InvalidConnectionException("Invalid password object type");
+		
+		System.out.println("Connect using SSH key: "+"\'"+address+"\'");
 	}
 
 }

@@ -2,5 +2,5 @@ package jo.secondstep.openclosed.correct.interfaces;
 
 public interface Connection {
 
-	void connect();
+	void connect(Object required);
 }

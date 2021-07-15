@@ -6,6 +6,6 @@ public interface Database {
 
 	void validateConnection();
 
-	void save(List<Object> data, String address);
+	void save(List<Object> data, String address, Object required);
 
 }

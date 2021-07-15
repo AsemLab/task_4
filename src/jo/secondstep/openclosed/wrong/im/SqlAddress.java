@@ -1,8 +1,6 @@
 package jo.secondstep.openclosed.wrong.im;
 
-import jo.secondstep.openclosed.wrong.interfaces.Connection;
-
-public class SqlAddress implements Connection {
+public class SqlAddress{
 
 	String address;
 	
@@ -10,8 +8,7 @@ public class SqlAddress implements Connection {
 		this.address = address;
 	}
 
-	@Override
-	public void connect() {
+	public void connect(String username) {
 	
 		System.out.println("Connect using local database");;
 	}
